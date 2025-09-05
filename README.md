@@ -1,5 +1,7 @@
 # Economic and Demographic Trend with RAG
 
+[![Vercel Deployment](https://img.shields.io/badge/vercel-deployed-success)](https://economic-demographic-trend-rag.vercel.app)
+
 A Next.js dashboard for exploring economic and demographic trends across countries, featuring forecasts and Retrieval-Augmented Generation (RAG) insights.
 
 ## Features
@@ -49,36 +51,44 @@ lib/
    npm start
    ```
 
+## Deployment Notes
+
+### Vercel vs GitHub Pages
+
+- **Vercel Deployment**: Full functionality including all API routes and dynamic features
+- **GitHub Pages Deployment**: Static version only; API routes don't work as GitHub Pages doesn't support server-side functionality
+
+For the best experience with all features, please use the Vercel deployment.
+
 ## CI/CD Pipeline
 
-This project uses GitHub Actions for CI/CD. The pipeline:
+This project uses both GitHub Actions and Vercel for CI/CD.
 
-1. Builds and tests the application on every push to main and pull request
-2. Deploys to GitHub Pages on successful merge to main branch
+### Primary Deployment: Vercel
 
-### Deployment Options
+This project is deployed on Vercel, which offers full support for Next.js features including API routes:
 
-#### GitHub Pages Deployment
+1. **Automatic Deployment**: Every push to the main branch is automatically deployed to Vercel
+2. **Preview Deployments**: Each pull request gets its own preview deployment
+3. **Live URL**: [https://economic-demographic-trend-rag.vercel.app](https://economic-demographic-trend-rag.vercel.app)
 
-The application is configured to deploy to GitHub Pages automatically:
+#### Setting Up Vercel Deployment
 
-1. The workflow automatically builds and deploys the static version of the app
-2. You can access the deployed application at: https://ehteshamulhaque123.github.io/economic-demographic-trend-rag/
+1. Go to [Vercel](https://vercel.com/signup) and sign up/login with your GitHub account
+2. Import your repository from GitHub
+3. Configure project settings (Next.js should be auto-detected)
+4. Deploy your project
 
-The workflow file is located at `.github/workflows/deploy-github-pages.yml`
+### Secondary Deployment: GitHub Pages
 
-#### Vercel Deployment (Alternative)
+A static version is also deployed to GitHub Pages, though with limited functionality due to lack of API route support:
 
-To enable automatic deployment to Vercel:
+1. The workflow automatically builds and deploys a static version of the app
+2. You can access it at: [https://ehteshamulhaque123.github.io/economic-demographic-trend-rag/](https://ehteshamulhaque123.github.io/economic-demographic-trend-rag/)
 
-1. Create a project on Vercel and connect it to your GitHub repository
-2. Get your Vercel API tokens and project details from Vercel dashboard
-3. Add the following secrets to your GitHub repository:
-   - `VERCEL_TOKEN`: Your Vercel API token
-   - `VERCEL_ORG_ID`: Your Vercel organization ID
-   - `VERCEL_PROJECT_ID`: Your Vercel project ID
-
-The Vercel workflow file is located at `.github/workflows/nextjs-ci-cd.yml`
+The workflow files are located at:
+- `.github/workflows/github-pages.yml` (GitHub Pages deployment)
+- `.github/workflows/nextjs-ci-cd.yml` (Vercel deployment via GitHub Actions - alternative to direct Vercel integration)
 
 
 ## How RAG Works
