@@ -53,42 +53,45 @@ lib/
 
 ## Deployment Notes
 
-### Vercel vs GitHub Pages
+This application requires a hosting platform that supports Next.js API routes, which is why we deploy to Vercel. The CI/CD pipeline automatically handles the deployment process whenever changes are pushed to the main branch.
 
-- **Vercel Deployment**: Full functionality including all API routes and dynamic features
-- **GitHub Pages Deployment**: Static version only; API routes don't work as GitHub Pages doesn't support server-side functionality
-
-For the best experience with all features, please use the Vercel deployment.
+To add new features or fix bugs:
+1. Create a new branch
+2. Make your changes
+3. Submit a pull request
+4. Once merged to main, the application will automatically deploy to Vercel
 
 ## CI/CD Pipeline
 
-This project uses both GitHub Actions and Vercel for CI/CD.
+This project uses GitHub Actions to deploy to Vercel.
 
-### Primary Deployment: Vercel
+### Vercel Deployment via GitHub Actions
 
-This project is deployed on Vercel, which offers full support for Next.js features including API routes:
+This project is automatically deployed to Vercel using GitHub Actions, which offers full support for Next.js features including API routes:
 
 1. **Automatic Deployment**: Every push to the main branch is automatically deployed to Vercel
-2. **Preview Deployments**: Each pull request gets its own preview deployment
-3. **Live URL**: [https://economic-demographic-trend-rag.vercel.app](https://economic-demographic-trend-rag.vercel.app)
+2. **Live URL**: [https://economic-demographic-trend-rag.vercel.app](https://economic-demographic-trend-rag.vercel.app) (will be available after deployment)
 
-#### Setting Up Vercel Deployment
+#### Vercel Deployment Setup
 
-1. Go to [Vercel](https://vercel.com/signup) and sign up/login with your GitHub account
-2. Import your repository from GitHub
-3. Configure project settings (Next.js should be auto-detected)
-4. Deploy your project
+To configure the GitHub Actions workflow for Vercel deployment:
 
-### Secondary Deployment: GitHub Pages
+1. **Generate Vercel API Tokens and Project Details**:
+   - Install Vercel CLI: `npm i -g vercel`
+   - Login to Vercel: `vercel login`
+   - Link your project: `vercel link`
+   - Get your tokens by running: `vercel project ls`
 
-A static version is also deployed to GitHub Pages, though with limited functionality due to lack of API route support:
+2. **Add GitHub Repository Secrets**:
+   - Go to your GitHub repository → Settings → Secrets and variables → Actions
+   - Add the following secrets:
+     - `VERCEL_TOKEN`: Your Vercel API token
+     - `VERCEL_ORG_ID`: Your Vercel organization ID
+     - `VERCEL_PROJECT_ID`: Your Vercel project ID
 
-1. The workflow automatically builds and deploys a static version of the app
-2. You can access it at: [https://ehteshamulhaque123.github.io/economic-demographic-trend-rag/](https://ehteshamulhaque123.github.io/economic-demographic-trend-rag/)
-
-The workflow files are located at:
-- `.github/workflows/github-pages.yml` (GitHub Pages deployment)
-- `.github/workflows/nextjs-ci-cd.yml` (Vercel deployment via GitHub Actions - alternative to direct Vercel integration)
+3. **Workflow Configuration**:
+   - The workflow configuration is defined in `.github/workflows/nextjs-ci-cd.yml`
+   - It handles building, testing, and deploying to Vercel
 
 
 ## How RAG Works
