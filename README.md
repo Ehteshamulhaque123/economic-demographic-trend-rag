@@ -49,6 +49,26 @@ lib/
    npm start
    ```
 
+## CI/CD Pipeline
+
+This project uses GitHub Actions for CI/CD. The pipeline:
+
+1. Builds and tests the application on every push to main and pull request
+2. Deploys to Vercel on successful merge to main branch
+
+### Setup for Deployment
+
+To enable automatic deployment to Vercel:
+
+1. Create a project on Vercel and connect it to your GitHub repository
+2. Get your Vercel API tokens and project details from Vercel dashboard
+3. Add the following secrets to your GitHub repository:
+   - `VERCEL_TOKEN`: Your Vercel API token
+   - `VERCEL_ORG_ID`: Your Vercel organization ID
+   - `VERCEL_PROJECT_ID`: Your Vercel project ID
+
+The workflow file is located at `.github/workflows/nextjs-ci-cd.yml`.
+
 
 ## How RAG Works
 
