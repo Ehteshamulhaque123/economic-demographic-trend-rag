@@ -54,9 +54,20 @@ lib/
 This project uses GitHub Actions for CI/CD. The pipeline:
 
 1. Builds and tests the application on every push to main and pull request
-2. Deploys to Vercel on successful merge to main branch
+2. Deploys to GitHub Pages on successful merge to main branch
 
-### Setup for Deployment
+### Deployment Options
+
+#### GitHub Pages Deployment
+
+The application is configured to deploy to GitHub Pages automatically:
+
+1. The workflow automatically builds and deploys the static version of the app
+2. You can access the deployed application at: https://ehteshamulhaque123.github.io/economic-demographic-trend-rag/
+
+The workflow file is located at `.github/workflows/deploy-github-pages.yml`
+
+#### Vercel Deployment (Alternative)
 
 To enable automatic deployment to Vercel:
 
@@ -67,7 +78,7 @@ To enable automatic deployment to Vercel:
    - `VERCEL_ORG_ID`: Your Vercel organization ID
    - `VERCEL_PROJECT_ID`: Your Vercel project ID
 
-The workflow file is located at `.github/workflows/nextjs-ci-cd.yml`.
+The Vercel workflow file is located at `.github/workflows/nextjs-ci-cd.yml`
 
 
 ## How RAG Works
