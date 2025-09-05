@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --bg: radial-gradient(1200px 800px at 10% 10%, #3b82f6 0%, transparent 60%),
+        radial-gradient(1200px 800px at 90% 20%, #ec4899 0%, transparent 60%),
+        linear-gradient(180deg, #a78bfa 0%, #f472b6 100%);
+}
+body { background: var(--bg); color: #0f172a; }
+.card { @apply rounded-2xl border border-border bg-panel backdrop-blur-xl shadow-[0_10px_40px_rgba(236,72,153,0.15)]; }
+.btn  { @apply px-4 py-2 rounded-xl font-semibold text-white bg-gradient-to-r from-accent to-accent2; }
+.input{ @apply w-full rounded-xl bg-white border border-border px-3 py-2 outline-none text-pink-700; }
+.badge{ @apply h-1.5 w-24 rounded-full bg-gradient-to-r from-accent to-accent2; }
